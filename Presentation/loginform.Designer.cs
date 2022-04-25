@@ -35,10 +35,11 @@
             this.txtpass = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnlogin = new System.Windows.Forms.Button();
-            this.linkpass = new System.Windows.Forms.LinkLabel();
+            this.linkpass_register = new System.Windows.Forms.LinkLabel();
             this.btncerrar = new System.Windows.Forms.PictureBox();
             this.btnminimizar = new System.Windows.Forms.PictureBox();
             this.lblErrorMessage = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btncerrar)).BeginInit();
@@ -125,18 +126,21 @@
             this.btnlogin.UseVisualStyleBackColor = false;
             this.btnlogin.Click += new System.EventHandler(this.btnlogin_Click);
             // 
-            // linkpass
+            // linkpass_register
             // 
-            this.linkpass.ActiveLinkColor = System.Drawing.SystemColors.Highlight;
-            this.linkpass.AutoSize = true;
-            this.linkpass.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.linkpass.LinkColor = System.Drawing.Color.DimGray;
-            this.linkpass.Location = new System.Drawing.Point(650, 532);
-            this.linkpass.Name = "linkpass";
-            this.linkpass.Size = new System.Drawing.Size(565, 49);
-            this.linkpass.TabIndex = 0;
-            this.linkpass.TabStop = true;
-            this.linkpass.Text = "Ha olvidado la contraseña?";
+            this.linkpass_register.ActiveLinkColor = System.Drawing.SystemColors.Highlight;
+            this.linkpass_register.AutoSize = true;
+            this.linkpass_register.Font = new System.Drawing.Font("Century Gothic", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.linkpass_register.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.linkpass_register.LinkColor = System.Drawing.Color.RoyalBlue;
+            this.linkpass_register.Location = new System.Drawing.Point(1075, 546);
+            this.linkpass_register.Name = "linkpass_register";
+            this.linkpass_register.Size = new System.Drawing.Size(140, 30);
+            this.linkpass_register.TabIndex = 0;
+            this.linkpass_register.TabStop = true;
+            this.linkpass_register.Text = "Registrarse";
+            this.linkpass_register.VisitedLinkColor = System.Drawing.Color.Navy;
+            this.linkpass_register.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkpass_register_LinkClicked);
             // 
             // btncerrar
             // 
@@ -174,16 +178,30 @@
             this.lblErrorMessage.Visible = false;
             this.lblErrorMessage.Click += new System.EventHandler(this.lblErrorMessage_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.label2.Location = new System.Drawing.Point(770, 548);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(299, 28);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Aun no estas registrado?";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
             // loginform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(20F, 48F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.ClientSize = new System.Drawing.Size(1381, 645);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.lblErrorMessage);
             this.Controls.Add(this.btnminimizar);
             this.Controls.Add(this.btncerrar);
-            this.Controls.Add(this.linkpass);
+            this.Controls.Add(this.linkpass_register);
             this.Controls.Add(this.btnlogin);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtpass);
@@ -212,10 +230,11 @@
         private TextBox txtpass;
         private Label label1;
         private Button btnlogin;
-        private LinkLabel linkpass;
+        private LinkLabel linkpass_register;
         private PictureBox pictureBox3;
         private PictureBox btncerrar;
         private PictureBox btnminimizar;
         private Label lblErrorMessage;
+        private Label label2;
     }
 }

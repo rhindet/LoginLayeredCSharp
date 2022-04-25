@@ -10,17 +10,22 @@ namespace DataAcces
 {
     public abstract class ConectionToSql
     {
-        private readonly string connectionString;
+        public readonly string   connectionString;
 
-        public ConectionToSql()
+        public  ConectionToSql()
         {
-            
-            connectionString = "Data Source=DESKTOP-V5CFQUL;Initial Catalog=MyCompany;Integrated Security=True ";
+           
+          connectionString = "Data Source=DESKTOP-V5CFQUL;Initial Catalog=MyCompany;Integrated Security=True ";
+          
         
         }
-        protected SqlConnection GetConnection()
+        public SqlConnection GetConnection()
         {
             return new SqlConnection(connectionString);
         }
+
+        
+
     }
-}
+
+}   

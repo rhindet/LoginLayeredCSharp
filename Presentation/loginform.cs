@@ -1,5 +1,6 @@
+using Common.cache;
+using domain;
 using System.Runtime.InteropServices;
-using domain;  
 
 
 
@@ -20,7 +21,7 @@ namespace Presentation
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
         private void txtuser_Enter(object sender, EventArgs e)
         {
-            if(txtuser.Text =="USUARIO")
+            if (txtuser.Text == "USUARIO")
             {
                 txtuser.Text = "";
                 txtuser.ForeColor = Color.LightGray;
@@ -30,7 +31,7 @@ namespace Presentation
 
         private void txtuser_Leave(object sender, EventArgs e)
         {
-            if(txtuser.Text == "")
+            if (txtuser.Text == "")
             {
                 txtuser.Text = "USUARIO";
                 txtuser.ForeColor = Color.DimGray;
@@ -87,23 +88,38 @@ namespace Presentation
 
         private void btnlogin_Click(object sender, EventArgs e)
         {
-            if (txtuser.Text != "USUARIO") {
-                if(txtpass.Text != "CONTRASEÑA") {
+            if (txtuser.Text != "USUARIO")
+            {
+                if (txtpass.Text != "CONTRASEÑA")
+                {
                     UserModel user = new UserModel();
                     var validLogin = user.LoginUser(txtuser.Text, txtpass.Text);
-                    
-                    if(validLogin == true)
+
+                    if (validLogin == true)
                     {
-                        Form1 mainMenu = new Form1();
-                        mainMenu.Show();
-                        mainMenu.FormClosed += Logout;
-                        this.Hide();
+                        
+                            if (UserLoginCache.Position == Positions.User) {
+                            usuarioVista mainusuarioVista= new usuarioVista();
+                            mainusuarioVista.Show();
+                            mainusuarioVista.FormClosed += Logout;
+                            this.Hide();
+                        }
+                        else
+                        {
+                            Form1 mainMenu = new Form1();
+                            mainMenu.Show();
+                            mainMenu.FormClosed += Logout;
+                            this.Hide();
+                        }
+                        
+
                     }
 
-                    else {
+                    else
+                    {
                         msgError("Usuario y/o contraseña incorrectas \n Vuelve a intentarlo");
-                        txtpass.Text = "Password";
-                        txtuser.Focus();
+                        txtpass.Text = "";
+                        txtpass.Focus();
                     }
                 }
                 else msgError("Porfavor ingresar contraseña");
@@ -112,11 +128,11 @@ namespace Presentation
         }
         private void msgError(string msg)
         {
-            lblErrorMessage.Text ="    " + msg;
+            lblErrorMessage.Text = "    " + msg;
             lblErrorMessage.Visible = true;
         }
 
-        private void Logout(object sender,FormClosedEventArgs e )
+        private void Logout(object sender, FormClosedEventArgs e)
         {
             txtpass.Text = "CONTRASEÑA";
             txtpass.UseSystemPasswordChar = false;
@@ -147,13 +163,26 @@ namespace Presentation
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            
+
         }
 
         private void panel1_MouseDown_1(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void linkpass_register_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            
+            Register_Form register_Form = new Register_Form();
+            register_Form.Show();
+            this.Hide();
         }
     }
 }
